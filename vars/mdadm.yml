@@ -1,0 +1,11 @@
+mdadm_arrays:
+  - name: 'md0'
+    devices:
+      - '/dev/vdb'
+      - '/dev/vdc'
+      - '/dev/vdd'
+      - '/dev/vde'
+    filesystem: 'ext4'
+    level: '0'
+    mountpoint: '/mnt/pgdata'
+    state: 'present'

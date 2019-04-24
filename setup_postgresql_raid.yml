@@ -1,0 +1,21 @@
+- hosts: spheredb-postgres-raid2
+  become: true
+  tasks:
+    - copy:
+       src: configs/51-ens4-init.cfg
+       dest: /etc/network/interfaces.d/
+       owner: root
+       group: root
+    - service:
+       name: networking
+       state: restarted 
+
+- hosts: spheredb-postgres-raid2
+  become: true
+  vars_files:
+    - vars/mdadm.yml
+    - vars/postgres_raid.yml
+  roles:
+    - { role: mrlesmithjr.mdadm }
+    - { role: geerlingguy.postgresql }
+

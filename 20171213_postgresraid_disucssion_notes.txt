@@ -1,0 +1,16 @@
+1) Launch ubuntu machine
+2) Create 4 volumes:
+Catalog1-2
+Data1-2
+3) Attach volumes to machine
+4) SSH into machine and run:
+sudo apt update
+sudo apt upgrade
+5) use mdadm to setup 2 raid0
+#https://www.digitalocean.com/community/tutorials/how-to-create-raid-arrays-with-mdadm-on-ubuntu-16-04
+sudo mdadm --create --verbose /dev/md0 --level=0 --raid-devices=2 /dev/vdb /dev/vdc
+sudo mdadm --create --verbose /dev/md1 --level=0 --raid-devices=2 /dev/vdd /dev/vde
+#https://blog.pgaddict.com/posts/postgresql-performance-on-ext4-and-xfs
+sudo mkfs.ext4 -F /dev/md0
+sudo mkfs.ext4 -F /dev/md1
+

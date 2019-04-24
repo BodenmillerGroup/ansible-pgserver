@@ -1,0 +1,8 @@
+[spheredb]
+172.23.194.35
+[spheredb-postgres]
+172.23.196.205
+[spheredb-postgres-raid]
+172.23.198.142
+[spheredb-postgres-raid2]
+172.23.198.154
