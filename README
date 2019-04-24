@@ -1,0 +1,13 @@
+ansible-pgserver
+
+This ansible playbook sets up a postgresql server, that as required for vitoz `analysis_spheroid` script.
+
+This ansible script allows to setup a postgres server using a raid0 configuration for the data.
+Consequently it is mainly thought to have a database optimized for speed to do short-term processing of datasets.
+
+The playbook can be executed via: `ansible-playbook -i hosts -u ubuntu setup_postgresql_raid.yml`
+
+It sets up:
+a) the secondary network interface to the bblab internal network
+b) the raid using 'mdadm' => the volumes need to be attached to the device in a maner consistent with the `vars/mdadm.yml` configuration.
+c) postgres according to `vars/postgres_raid.yml`
